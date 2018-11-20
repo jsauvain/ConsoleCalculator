@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class CalculatorTest {
 
@@ -119,6 +120,41 @@ class CalculatorTest {
 
             assertThat(result)
                     .isEqualTo(0);
+        }
+    }
+
+    @Nested
+    class DivisionTests {
+        @Test
+        void givenTwoPositiveNumbersItShouldCalculateThem() {
+            int firstNumber = 20;
+            int secondNumber = 10;
+
+            int result = calculator.division(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(2);
+        }
+
+        @Test
+        void givenTwoNegativeNumbersItShouldCalculateThem() {
+            int firstNumber = -20;
+            int secondNumber = -20;
+
+            int result = calculator.division(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(1);
+        }
+
+        @Test
+        void givenTwoZeroValueNumbersItShouldThrowAnException() {
+            int zeroValue = 0;
+
+            Throwable throwable = catchThrowable(() -> calculator.division(zeroValue, zeroValue));
+
+            assertThat(throwable)
+                    .isInstanceOf(ArithmeticException.class);
         }
     }
 
