@@ -4,7 +4,7 @@ deploy:
   provider: releases
   api_key:
     secure: piOU7FfdrLWkjNEsCsGwYSuU8xKMfl1+/shLwTvhlisEgJ7pYTQh/X50wvmUbcCiAxnCmD/EplHLhlu1GEEZd6z3UzVNJDaQn7MuCSFrFw18wUcPiomvoFqWJ6Ca8orCk/MzqqDCIKMzAu9xCqHqhTZrD2vGtNjtP5T2Qq88rshJ3gYXJcDoAjbNHsonWqlLYzdTgNseekgWH9VweFXMFtaYyN8fes3EnC0CJ2c93fAecZ1+PZ0ocAQb8e7AKVfW14wA+mIeuwyHbG0PPw0K53nxUtrTmgVGBW+43bARrDxFZegHEl/0+tFvRS+QoRoYLSi8Zt+qfThDNipiBek9Iod9v/ISl2qt5auVTXYBqatZ7rkqevS5prbvCcdb56c8DNV8Uz6fdeCFGhFwcksjtXSk8B9glP79dZX8YgS2UT5sLyMY1fnTvHBW/wEZKQ+AHe2Qe1iyB8/wV069DCiQWpd4cbDN0p/62ZOyAViYLC2HZumPX0dGgLofevp+y+kbKNHm2QFY3taWohpP0NOGRJUEqZu+Y5VD6uY8hhwgdL/i9w1kAnKDYSiVek1TinucgDXvqbK3LqPOgbvSNj/mjvCQD7x3mqFxa6f1CGn/Q0JCKYc0CMSNK+d2/0axBrJnOlkRSntTffpEOZh2vl+P+j+zZ0CHQAm1Xk/YI3DgOB0=
-  file: "/home/travis/build/jsauvain/ConsoleCalculator/target/*.jar"
+  file: "/home/travis/build/jsauvain/ConsoleCalculator/target/console-calculator-1.0-SNAPSHOT.jar"
   skip_cleanup: true
   on:
     tags: true
