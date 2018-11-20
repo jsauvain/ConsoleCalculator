@@ -3,7 +3,7 @@ package ch.jooel.consolecalculator;
 public class Calculator {
 
     public int addition(int firstNumber, int secondNumber) {
-        return firstNumber + secondNumber;
+        return redirectedAddition(firstNumber, secondNumber);
     }
 
     public int subtraction(int firstNumber, int secondNumber) {
@@ -16,6 +16,10 @@ public class Calculator {
 
     public int division(int firstNumber, int secondNumber) {
         return firstNumber / secondNumber;
+    }
+
+    private int redirectedAddition(int firstNumber, int secondNumber) {
+        return firstNumber + secondNumber;
     }
 
 
