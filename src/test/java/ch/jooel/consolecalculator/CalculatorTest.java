@@ -51,6 +51,61 @@ class CalculatorTest {
                     .isEqualTo(0);
         }
 
+        @Test
+        void givenPositiveAndNegativeNumberItShouldCalculateThem() {
+            int firstNumber = -10;
+            int secondNumber = 20;
+
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(10);
+        }
+
+        @Test
+        void givenZeroValueAndPositiveNumberItShouldCalculateThem() {
+            int firstNumber = 0;
+            int secondNumber = 20;
+
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(20);
+        }
+
+        @Test
+        void givenMaxValueItShouldOverflow() {
+            int firstNumber = Integer.MAX_VALUE;
+            int secondNumber = 20;
+
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(Integer.MIN_VALUE + 19);
+        }
+
+        @Test
+        void givenMaxValueItShouldUnderflow() {
+            int firstNumber = Integer.MIN_VALUE;
+            int secondNumber = -20;
+
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(Integer.MAX_VALUE - 19);
+        }
+
+        @Test
+        void givenBigNumbersItShouldCalculateThem() {
+            int firstNumber = 10;
+            int secondNumber = 9244424;
+
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(9244434);
+        }
+
     }
 
     @Nested
@@ -86,6 +141,61 @@ class CalculatorTest {
             assertThat(result)
                     .isEqualTo(0);
         }
+
+        @Test
+        void givenPositiveAndNegativeNumberItShouldCalculateThem() {
+            int firstNumber = -10;
+            int secondNumber = 20;
+
+            int result = calculator.subtraction(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(-30);
+        }
+
+        @Test
+        void givenZeroValueAndPositiveNumberItShouldCalculateThem() {
+            int firstNumber = 0;
+            int secondNumber = 20;
+
+            int result = calculator.subtraction(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(-20);
+        }
+
+        @Test
+        void givenTooHighNumbersItShouldOverflow() {
+            int firstNumber = Integer.MAX_VALUE;
+            int secondNumber = -2;
+
+            int result = calculator.subtraction(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(Integer.MIN_VALUE + 1);
+        }
+
+        @Test
+        void givenTooHighNumbersItShouldUnderflow() {
+            int firstNumber = Integer.MIN_VALUE;
+            int secondNumber = 2;
+
+            int result = calculator.subtraction(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(Integer.MAX_VALUE + -1);
+        }
+
+        @Test
+        void givenZeroAsItShouldBeLowerAsZero() {
+            int firstNumber = 0;
+            int secondNumber = 2;
+
+            int result = calculator.subtraction(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(-2);
+        }
     }
 
     @Nested
@@ -117,6 +227,28 @@ class CalculatorTest {
             int zeroValue = 0;
 
             int result = calculator.multiplication(zeroValue, zeroValue);
+
+            assertThat(result)
+                    .isEqualTo(0);
+        }
+
+        @Test
+        void givenPositiveAndNegativeNumberItShouldCalculateThem() {
+            int firstNumber = -10;
+            int secondNumber = 20;
+
+            int result = calculator.multiplication(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(-200);
+        }
+
+        @Test
+        void givenZeroValueAndPositiveNumberItShouldCalculateThem() {
+            int firstNumber = 0;
+            int secondNumber = 20;
+
+            int result = calculator.multiplication(firstNumber, secondNumber);
 
             assertThat(result)
                     .isEqualTo(0);
@@ -156,6 +288,62 @@ class CalculatorTest {
             assertThat(throwable)
                     .isInstanceOf(ArithmeticException.class);
         }
+
+        @Test
+        void givenPositiveAndNegativeNumberItShouldCalculateThem() {
+            int firstNumber = -20;
+            int secondNumber = 10;
+
+            int result = calculator.division(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(-2);
+        }
+
+        @Test
+        void givenZeroValueAndPositiveNumberItShouldCalculateThem() {
+            int firstNumber = 0;
+            int secondNumber = 20;
+
+            int result = calculator.division(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(0);
+        }
+
+        @Test
+        void givenPositiveValueAndZeroNumberItShouldCalculateThem() {
+            int firstNumber = 20;
+            int secondNumber = 0;
+
+            Throwable throwable = catchThrowable(() -> calculator.division(firstNumber, secondNumber));
+
+            assertThat(throwable)
+                    .isInstanceOf(ArithmeticException.class);
+        }
+
+        @Test
+        void givenUnevenSolutionItShouldRoundDown() {
+            int firstNumber = 5;
+            int secondNumber = 2;
+
+            int result = calculator.division(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(2);
+        }
+
+        @Test
+        void givenABiggerNumberThanBaseNumberItShouldReturnZero() {
+            int firstNumber = 2;
+            int secondNumber = 5;
+
+            int result = calculator.division(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(0);
+        }
+
     }
 
 }
