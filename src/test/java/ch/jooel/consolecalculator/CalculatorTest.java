@@ -87,4 +87,39 @@ class CalculatorTest {
         }
     }
 
+    @Nested
+    class MultiplicationTests {
+        @Test
+        void givenTwoPositiveNumbersItShouldCalculateThem() {
+            int firstNumber = 20;
+            int secondNumber = 10;
+
+            int result = calculator.multiplication(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(200);
+        }
+
+        @Test
+        void givenTwoNegativeNumbersItShouldCalculateThem() {
+            int firstNumber = -10;
+            int secondNumber = -20;
+
+            int result = calculator.multiplication(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(200);
+        }
+
+        @Test
+        void givenTwoZeroValueNumbersItShouldCalculateThem() {
+            int zeroValue = 0;
+
+            int result = calculator.multiplication(zeroValue, zeroValue);
+
+            assertThat(result)
+                    .isEqualTo(0);
+        }
+    }
+
 }
