@@ -1,44 +1,90 @@
 package ch.jooel.consolecalculator;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculatorTest {
 
-    @Test
-    void givenTwoPositiveNumbersItShouldCalculateThem() {
-        int firstNumber = 20;
-        int secondNumber = 10;
-        Calculator calculator = new Calculator();
+    private Calculator calculator;
 
-        int result = calculator.addition(firstNumber, secondNumber);
-
-        assertThat(result)
-                .isEqualTo(30);
+    @BeforeEach
+    void setUp() {
+        calculator = new Calculator();
     }
 
-    @Test
-    void givenTwoNegativeNumbersItShouldCalculateThem() {
-        int firstNumber = -10;
-        int secondNumber = -20;
-        Calculator calculator = new Calculator();
+    @Nested
+    class AdditionTests {
 
-        int result = calculator.addition(firstNumber, secondNumber);
+        @Test
+        void givenTwoPositiveNumbersItShouldCalculateThem() {
+            int firstNumber = 20;
+            int secondNumber = 10;
 
-        assertThat(result)
-                .isEqualTo(-30);
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(30);
+        }
+
+        @Test
+        void givenTwoNegativeNumbersItShouldCalculateThem() {
+            int firstNumber = -10;
+            int secondNumber = -20;
+
+            int result = calculator.addition(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(-30);
+        }
+
+        @Test
+        void givenTwoZeroValueNumbersItShouldCalculateThem() {
+            int zeroValue = 0;
+
+            int result = calculator.addition(zeroValue, zeroValue);
+
+            assertThat(result)
+                    .isEqualTo(0);
+        }
+
     }
 
-    @Test
-    void givenTwoZeroValueNumbersItShouldCalculateThem() {
-        int zeroValue = 0;
-        Calculator calculator = new Calculator();
+    @Nested
+    class SubtractionTests {
+        @Test
+        void givenTwoPositiveNumbersItShouldCalculateThem() {
+            int firstNumber = 20;
+            int secondNumber = 10;
 
-        int result = calculator.addition(zeroValue, zeroValue);
+            int result = calculator.subtraction(firstNumber, secondNumber);
 
-        assertThat(result)
-                .isEqualTo(0);
+            assertThat(result)
+                    .isEqualTo(10);
+        }
+
+        @Test
+        void givenTwoNegativeNumbersItShouldCalculateThem() {
+            int firstNumber = -10;
+            int secondNumber = -20;
+
+            int result = calculator.subtraction(firstNumber, secondNumber);
+
+            assertThat(result)
+                    .isEqualTo(10);
+        }
+
+        @Test
+        void givenTwoZeroValueNumbersItShouldCalculateThem() {
+            int zeroValue = 0;
+
+            int result = calculator.subtraction(zeroValue, zeroValue);
+
+            assertThat(result)
+                    .isEqualTo(0);
+        }
     }
 
 }
