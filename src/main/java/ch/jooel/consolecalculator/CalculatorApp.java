@@ -8,6 +8,8 @@ public class CalculatorApp {
             System.err.println("Please add two arguments");
             throw new RuntimeException();
         }
+        System.out.println("Console Calculator");
+        System.out.println("==================");
         System.out.println(calculator.addition(parseArg(args[0]), parseArg(args[1])));
     }
 
