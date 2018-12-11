@@ -12,7 +12,11 @@ public class CalculatorApp {
         System.out.println("==================");
         int number1 = parseArg(args[0]);
         int number2 = parseArg(args[1]);
-        System.out.println("Summe von " + number1 + " + " + number2 + " = " + calculator.addition(parseArg(args[0]), parseArg(args[1])));
+        try {
+            System.out.println("Summe von " + number1 + " + " + number2 + " = " + calculator.addition(parseArg(args[0]), parseArg(args[1])));
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static Integer parseArg(String arg) {

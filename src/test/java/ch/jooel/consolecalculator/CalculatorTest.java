@@ -74,25 +74,27 @@ class CalculatorTest {
         }
 
         @Test
-        void givenMaxValueItShouldOverflow() {
+        void givenMaxValueItShouldThrowException() {
             int firstNumber = Integer.MAX_VALUE;
             int secondNumber = 20;
 
-            int result = calculator.addition(firstNumber, secondNumber);
+            Throwable throwable = catchThrowable(() -> calculator.addition(firstNumber, secondNumber));
 
-            assertThat(result)
-                    .isEqualTo(Integer.MIN_VALUE + 19);
+            assertThat(throwable)
+                    .isInstanceOf(ArithmeticException.class)
+                    .hasMessage("Result too big");
         }
 
         @Test
-        void givenMaxValueItShouldUnderflow() {
+        void givenMinValueItShouldThrowException() {
             int firstNumber = Integer.MIN_VALUE;
             int secondNumber = -20;
 
-            int result = calculator.addition(firstNumber, secondNumber);
+            Throwable throwable = catchThrowable(() -> calculator.addition(firstNumber, secondNumber));
 
-            assertThat(result)
-                    .isEqualTo(Integer.MAX_VALUE - 19);
+            assertThat(throwable)
+                    .isInstanceOf(ArithmeticException.class)
+                    .hasMessage("Result too big");
         }
 
         @Test
@@ -165,25 +167,27 @@ class CalculatorTest {
         }
 
         @Test
-        void givenTooHighNumbersItShouldOverflow() {
+        void givenMaxValueItShouldThrowException() {
             int firstNumber = Integer.MAX_VALUE;
             int secondNumber = -2;
 
-            int result = calculator.subtraction(firstNumber, secondNumber);
+            Throwable throwable = catchThrowable(() -> calculator.subtraction(firstNumber, secondNumber));
 
-            assertThat(result)
-                    .isEqualTo(Integer.MIN_VALUE + 1);
+            assertThat(throwable)
+                    .isInstanceOf(ArithmeticException.class)
+                    .hasMessage("Result too big");
         }
 
         @Test
-        void givenTooHighNumbersItShouldUnderflow() {
+        void givenMinValueShouldThrowException() {
             int firstNumber = Integer.MIN_VALUE;
             int secondNumber = 2;
 
-            int result = calculator.subtraction(firstNumber, secondNumber);
+            Throwable throwable = catchThrowable(() -> calculator.subtraction(firstNumber, secondNumber));
 
-            assertThat(result)
-                    .isEqualTo(Integer.MAX_VALUE + -1);
+            assertThat(throwable)
+                    .isInstanceOf(ArithmeticException.class)
+                    .hasMessage("Result too big");
         }
 
         @Test
