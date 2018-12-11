@@ -10,7 +10,9 @@ public class CalculatorApp {
         }
         System.out.println("Console Calculator");
         System.out.println("==================");
-        System.out.println(calculator.addition(parseArg(args[0]), parseArg(args[1])));
+        int number1 = parseArg(args[0]);
+        int number2 = parseArg(args[1]);
+        System.out.println("Summe von " + number1 + " + " + number2 + " = " + calculator.addition(parseArg(args[0]), parseArg(args[1])));
     }
 
     private static Integer parseArg(String arg) {
